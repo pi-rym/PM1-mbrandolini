@@ -1,0 +1,125 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 2%;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #333;
+    text-align: center;
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+p {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Estilos de secciones */
+section {
+    margin-bottom: 40px;
+}
+
+/* Estilos de tarjetas */
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+/* Estilos de formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+form input {
+    width: calc(33.33% - 10px);
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form button {
+    width: calc(33.33% - 10px);
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para las tarjetas de tecnología */
+.tecnologias-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+
+.tecnologia {
+    width: calc(30% - 20px);
+    margin: 0 10px 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.tecnologia-img {
+    width: 150px; /* Ajusta el tamaño de las imágenes según tus necesidades */
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.tecnologia h3 {
+    font-size: 20px; /* Diferentes tamaños de fuentes para los títulos */
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.tecnologia p {
+    font-size: 16px; /* Diferentes tamaños de fuentes para los textos */
+    color: #666;
+    margin-bottom: 10px;
+}

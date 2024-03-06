@@ -3,9 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Presentación Personal</title>
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-    <h1>Proyecto M1</h1>
+    <h1>Mariano Daniel Brandolini</h1>
+
+    <!-- Sección "Sobre Mí" -->
+    <section id="sobre-mi">
+        <h2>Sobre Mí</h2>
+        <p>Mi nobre es Mariano y estoy haciendo la Homework de la clase 1, espero poder adquirir conocimientos y convertirme en un desarrollador web full Stack</p>
+    </section>
+
+    <!-- Sección "Mis Tecnologías Favoritas" -->
+    <section id="tecnologias-favoritas">
+        <h2>Mis Tecnologías Favoritas</h2>
+        <div class="tecnologias-container">
+            <div class="tecnologia">
+                <img class="tecnologia-img" src="assets/img/HTML.jpeg" alt="HTML">
+                <h3>HTML</h3>
+                <p>HTML es el lenguaje de marcado estándar para crear páginas web.</p>
+            </div>
+            <div class="tecnologia">
+                <img class="tecnologia-img" src="assets/img/JS.jpeg" alt="JavaScript">
+                <h3>JavaScript</h3>
+                <p>JavaScript es un lenguaje de programación que se utiliza para crear interactividad en sitios web.</p>
+            </div>
+            <div class="tecnologia">
+                <img class="tecnologia-img" src="assets/img/CSS.jpeg" alt="CSS">
+                <h3>CSS</h3>
+                <p>CSS es un lenguaje de diseño utilizado para estilizar la presentación de los documentos HTML.</p>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Sección "Mis Actividades Favoritas" -->
+    <section id="actividades-favoritas">
+        <h2>Mis Actividades Favoritas</h2>
+        <form id="actividad-form">
+            <input type="text" id="titulo" placeholder="Título">
+            <input type="text" id="descripcion" placeholder="Descripción">
+            <input type="url" id="url-imagen" placeholder="URL de la imagen">
+            <button type="submit">Agregar Actividad</button>
+        </form>
+        <div id="actividades-container">
+            <!-- Aquí se mostrarán las tarjetas con las actividades creadas -->
+        </div>
+    </section>
 </body>
+
 </html>
