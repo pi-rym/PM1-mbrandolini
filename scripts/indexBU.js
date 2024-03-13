@@ -18,7 +18,7 @@ class Repository {
   }
 
   createActivity(title, description, imgUrl) {
-    const id = this.id++;
+    const id = ++this.id;
     const newActivity = new Activity(id, title, description, imgUrl);
     this.activities.push(newActivity);
   }
@@ -29,6 +29,16 @@ class Repository {
 }
 
 const repository = new Repository();
+
+/*// Agregar actividades favoritas
+repository.createActivity("Hacer ejercicio", "Ir al gimnasio todos los días", "gimnasio.jpg");
+repository.createActivity("Leer un libro", "Leer al menos 30 minutos al día", "libro.jpg");
+repository.createActivity("Aprender a programar", "Practicar codificación en JavaScript", "coding.jpg");
+
+// Obtener todas las actividades y mostrarlas en la consola
+const actividades = repository.getAllActivities();
+console.log("Todas las actividades:");
+console.log(actividades);*/
 
 function createActivityCard(activity) {
   // Extraer propiedades del objeto Activity usando destructuring
@@ -84,9 +94,7 @@ function renderActivities(container) {
   });
 }
 
-function addButtonHandler(event) {
-  event.preventDefault(); // Evitar que el formulario se envíe
-
+function addButtonHandler() {
   // Seleccionar los inputs de title, description e imgUrl
   const titleInput = document.getElementById("titulo");
   const descriptionInput = document.getElementById("descripcion");
@@ -106,20 +114,30 @@ function addButtonHandler(event) {
   // Llamar al método correspondiente de la instancia de Repository para crear una nueva actividad
   repository.createActivity(title, description, imgUrl);
 
-  // Limpiar los inputs del formulario
-  titleInput.value = "";
-  descriptionInput.value = "";
-  imgUrlInput.value = "";
-
   // Invocar la función para refrescar el contenedor de actividades
   renderActivities("#actividades-container");
 }
 
-// Seleccionar el formulario de actividad
-const activityForm = document.getElementById("actividad-form");
+// Seleccionar el botón de agregar actividad
+const addButton = document.getElementById("add-button");
 
-// Agregar un Event Listener al formulario para ejecutar la función addButtonHandler al hacer clic en el botón de submit
-activityForm.addEventListener("submit", addButtonHandler);
+// Agregar un Event Listener al botón para ejecutar la función addButtonHandler al hacer clic
+addButton.addEventListener("click", addButtonHandler);
 
-// Llamar a renderActivities para mostrar las actividades inicialmente
-renderActivities("#actividades-container");
+// Obtener el contenedor de actividades
+const actividadesContainer = document.querySelector("#actividades-container");
+
+// Agregar un Event Listener al contenedor de actividades para delegar eventos
+actividadesContainer.addEventListener("click", function (event) {
+  // Verificar si el clic ocurrió en un botón de eliminar actividad
+  if (event.target.classList.contains("delete-button")) {
+    // Obtener el ID de la actividad a eliminar
+    const activityId = parseInt(event.target.dataset.activityId);
+
+    // Llamar al método deleteActivity de la instancia de Repository para eliminar la actividad
+    repository.deleteActivity(activityId);
+
+    // Refrescar el contenedor de actividades
+    renderActivities("#actividades-container");
+  }
+});
