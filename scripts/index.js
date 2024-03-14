@@ -31,83 +31,80 @@ class Repository {
 const repository = new Repository();
 
 function createActivityCard(activity) {
-    // Extraer propiedades del objeto Activity usando destructuring
-    const { id, title, description, imgUrl } = activity;
+  // Extraer propiedades del objeto Activity usando destructuring
+  const { id, title, description, imgUrl } = activity;
 
-    // Crear elementos HTML para la tarjeta de actividad
-    const card = document.createElement("div");
-    const titleElement = document.createElement("h3");
-    const descriptionElement = document.createElement("p");
-    const imageElement = document.createElement("img");
-    const deleteButton = document.createElement("button"); // Nuevo botón de eliminar
+  // Crear elementos HTML para la tarjeta de actividad
+  const card = document.createElement("div");
+  const titleElement = document.createElement("h3");
+  const descriptionElement = document.createElement("p");
+  const imageElement = document.createElement("img");
+  const deleteButton = document.createElement("button"); // Nuevo botón de eliminar
 
-    // Asignar valores a las propiedades correspondientes de los elementos
-    titleElement.innerHTML = title;
-    descriptionElement.innerHTML = description;
-    imageElement.src = imgUrl;
-    deleteButton.innerHTML = "Eliminar"; // Texto del botón de eliminar
+  // Asignar valores a las propiedades correspondientes de los elementos
+  titleElement.innerHTML = title;
+  descriptionElement.innerHTML = description;
+  imageElement.src = imgUrl;
+  deleteButton.innerHTML = "Eliminar"; // Texto del botón de eliminar
 
-    // Agregar clases CSS a los elementos
-    card.classList.add("card");
-    titleElement.classList.add("activity-title");
-    descriptionElement.classList.add("activity-description");
-    imageElement.classList.add("activity-image");
-    deleteButton.classList.add("delete-button"); // Clase para el botón de eliminar
+  // Agregar clases CSS a los elementos
+  card.classList.add("activity-card");
+  titleElement.classList.add("activity-title");
+  descriptionElement.classList.add("activity-description");
+  imageElement.classList.add("activity-image");
+  deleteButton.classList.add("delete-button"); // Clase para el botón de eliminar
 
-    // Agregar Event Listener al botón de eliminar
-    deleteButton.addEventListener("click", function(event) {
-        // Evitar que el clic se propague a la tarjeta
-        event.stopPropagation();
-        // Obtener el ID de la actividad asociada al botón de eliminar
-        const activityId = id;
-        // Eliminar la actividad utilizando el método deleteActivity del repositorio
-        repository.deleteActivity(activityId);
-        // Refrescar el contenedor de actividades
-        renderActivities("#actividades-container");
-    });
+  // Agregar Event Listener al botón de eliminar
+  deleteButton.addEventListener("click", function (event) {
+    // Evitar que el clic se propague a la tarjeta
+    event.stopPropagation();
+    // Obtener el ID de la actividad asociada al botón de eliminar
+    const activityId = id;
+    // Eliminar la actividad utilizando el método deleteActivity del repositorio
+    repository.deleteActivity(activityId);
+    // Refrescar el contenedor de actividades
+    renderActivities("#actividades-container");
+  });
 
-    // Agregar los elementos al div de la tarjeta
-    card.appendChild(titleElement);
-    card.appendChild(descriptionElement);
-    card.appendChild(imageElement);
-    card.appendChild(deleteButton); // Agregar el botón de eliminar a la tarjeta
+  // Agregar los elementos al div de la tarjeta
+  card.appendChild(titleElement);
+  card.appendChild(descriptionElement);
+  card.appendChild(imageElement);
+  card.appendChild(deleteButton); // Agregar el botón de eliminar a la tarjeta
 
-    // Asignar clase CSS al div de la tarjeta
-    card.classList.add("activity-card");
-
-    // Retornar el div finalizado con todos los elementos correspondientes dentro
-    return card;
+  // Retornar el div finalizado con todos los elementos correspondientes dentro
+  return card;
 }
 
 function renderActivities(container) {
-    // Seleccionar el contenedor donde queremos agregar las actividades
-    const containerElement = document.querySelector(container);
+  // Seleccionar el contenedor donde queremos agregar las actividades
+  const containerElement = document.querySelector(container);
 
-    // Vaciar el contenido actual del contenedor
-    containerElement.innerHTML = "";
+  // Vaciar el contenido actual del contenedor
+  containerElement.innerHTML = "";
 
-    // Obtener el listado completo de actividades
-    const activities = repository.getAllActivities();
+  // Obtener el listado completo de actividades
+  const activities = repository.getAllActivities();
 
-    // Mapear el listado de actividades para convertirlos en elementos HTML
-    const activityElements = activities.map(activity => {
-        const card = createActivityCard(activity);
-        // Agregar un Event Listener a cada tarjeta de actividad
-        card.addEventListener("click", function() {
-            // Obtener el ID de la actividad asociada a la tarjeta
-            const activityId = activity.id;
-            // Eliminar la actividad utilizando el método deleteActivity del repositorio
-            repository.deleteActivity(activityId);
-            // Refrescar el contenedor de actividades
-            renderActivities(container);
-        });
-        return card;
+  // Mapear el listado de actividades para convertirlos en elementos HTML
+  const activityElements = activities.map((activity) => {
+    const card = createActivityCard(activity);
+    // Agregar un Event Listener a cada tarjeta de actividad
+    card.addEventListener("click", function () {
+      // Obtener el ID de la actividad asociada a la tarjeta
+      const activityId = activity.id;
+      // Eliminar la actividad utilizando el método deleteActivity del repositorio
+      repository.deleteActivity(activityId);
+      // Refrescar el contenedor de actividades
+      renderActivities(container);
     });
+    return card;
+  });
 
-    // Appendear todos los elementos HTML dentro del contenedor seleccionado
-    activityElements.forEach(element => {
-        containerElement.appendChild(element);
-    });
+  // Appendear todos los elementos HTML dentro del contenedor seleccionado
+  activityElements.forEach((element) => {
+    containerElement.appendChild(element);
+  });
 }
 
 function addButtonHandler(event) {
