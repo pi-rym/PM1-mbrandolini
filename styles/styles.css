@@ -125,9 +125,10 @@ form button:hover {
 
 /* Estilos para el título de la actividad */
 .activity-title {
-  font-size: 20px;
-  color: #333333;
+  font-size: 30px;
+  color: #ff4444;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 /* Estilos para la descripción de la actividad */
@@ -139,19 +140,35 @@ form button:hover {
 
 /* Estilos para la imagen de la actividad */
 .activity-image {
-  width: 100%;
+  width: 300px;
   height: auto;
   border-radius: 4px;
   margin-bottom: 10px;
 }
 
 .activity-card {
-  background-color: burlywood;
-  border-radius: 25px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: inline-block; /* Mostrar las tarjetas una al lado de la otra */
+  width: calc(30% - 20px); /* Ancho deseado para cada tarjeta */
+  margin: 0 10px 20px; /* Margen entre las tarjetas */
   padding: 20px;
-  margin-bottom: 20px;
+  background-color: #3bc49079;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center; /* Centrar el contenido dentro de la tarjeta */
 }
+
+.activity-card h3, .activity-card p {
+  margin: 10px 0; /* Margen entre el título, la descripción y la imagen */
+}
+
+.activity-card img {
+  display: block; /* Asegurar que la imagen se muestre como un bloque */
+  margin: 0 auto 10px; /* Centrar la imagen */
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
 
 .delete-button {
   background-color: #ff4444; /* Color de fondo del botón */
