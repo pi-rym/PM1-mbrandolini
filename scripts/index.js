@@ -123,3 +123,8 @@ const activityForm = document.getElementById("actividad-form");
 activityForm.addEventListener("submit", addButtonHandler);
 
 renderActivities("#actividades-container");
+
+module.exports = {
+  Activity,
+  Repository,
+};
