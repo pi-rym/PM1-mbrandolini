@@ -1,15 +1,11 @@
 const { Activity, Repository } = require("../scripts/index");
-
-//describe("demo", function () {
-//  it("Este test debe pasar siempre", function () {
-//    expect(4 + 2).toBe(6);
-//  });
-//});
+//const { createActivityCard, renderActivities, addButtonHandler } = require("../scripts/domUtils");
 
 describe("Clase Activity", function () {
   it("debería ser una clase", function () {
     expect(typeof Activity).toEqual("function");
   });
+
   it("debería tener una propiedad 'id'", function () {
     const actividad = new Activity(1, "Título", "Descripción", "imgUrl");
     expect(actividad.id).toBeDefined();
@@ -30,7 +26,6 @@ describe("Clase Activity", function () {
     expect(actividad.imgUrl).toBeDefined();
   });
 });
-
 
 describe("Clase Repository", function () {
   it("debería ser una clase", function () {
